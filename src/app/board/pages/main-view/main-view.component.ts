@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import { Board } from 'src/app/models/board.model';
-import { Column } from 'src/app/models/column.model';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Column } from '../../models/column.model';
+import { Board } from '../../models/board.model';
+
+
 
 @Component({
   selector: 'app-main-view',
