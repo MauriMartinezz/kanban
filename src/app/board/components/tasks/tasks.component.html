@@ -1,1 +1,12 @@
-<p>tasks works!</p>
+
+
+  <div
+  class="task-container"
+  cdkDropList
+  [cdkDropListData]="tasks"
+  (cdkDropListDropped)="drop($event)"
+>
+<div class="task" *ngFor="let task of tasks" cdkDrag>
+    {{ task }}
+  </div>
+</div>
