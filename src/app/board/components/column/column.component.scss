@@ -1,0 +1,41 @@
+.column-header{
+    display: flex;
+    justify-content: space-between;
+}
+.column-header--title{
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.column-header--button{
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    span{
+        cursor: pointer;
+    }
+}
+
+
+
+.task__form{
+    position: relative;
+    border: 1px solid red;
+    .task__form--input{
+        border-radius: 20px;
+        width: 100%;
+        outline: none;
+        padding: 10px;
+        border: none;
+    }
+    .task__form--submit{
+        position: absolute;
+        left: 100%;
+        bottom: 50%;
+    }
+
+}

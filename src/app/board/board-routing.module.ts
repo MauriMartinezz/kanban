@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
 
 const routes: Routes = [
@@ -7,7 +8,11 @@ const routes: Routes = [
     path: "",
     children:[
       {
-          path: "",
+        path: "",
+        component: HomeComponent
+      },
+      {
+          path: "kanban",
           component: MainViewComponent
       },
       {

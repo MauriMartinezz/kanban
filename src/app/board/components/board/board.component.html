@@ -1,0 +1,47 @@
+<div class="board">
+  <div class="board-bar">
+    <p class="board-name">Board Name!</p>
+  </div>
+  <div class="board-wrapper">
+    <div class="board-columns" cdkDropListGroup>
+      <div class="board-column" *ngFor="let column of board.columns">
+        <app-column [column]="column" (newTaskEvent)="addTask($event)"></app-column>
+        <!-- <div class="column-header">
+          <div class="column-header--title">
+            <h4>
+              {{ column.name }}
+            </h4>
+          </div>
+          <div class="column-header--button">
+            <span (click)="showForm = !showForm" 
+                  *ngIf="!showForm; else closeForm">
+
+              <img width="30" src="/assets/icons/add-icon.svg" alt="Add task button">
+            </span>
+          </div>
+          <ng-template #closeForm>
+            <span (click)="showForm = !showForm">
+
+              <img  width="30" 
+                    src="/assets/icons/close-button.svg" 
+                    alt="Close form button">
+            </span>
+          </ng-template>
+          
+          <div *ngIf="showForm">
+            <form action="" (ngSubmit)="addTask(newTask, column.name)">
+              <input  type="text" 
+                      [(ngModel)]="newTask" 
+                      name="taskAdder" />
+              <button type="submit">+</button>
+            </form>
+          </div>
+
+        </div>
+        <app-tasks [tasks]="column.tasks"></app-tasks> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+

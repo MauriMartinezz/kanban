@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "kanban",
+    path: "",
     loadChildren: ()=> import("./board/board.module").then(m=> m.BoardModule)
   },
   {
     path: "**",
-    redirectTo: "kanban"
+    redirectTo: ""
   }
 ];
 
