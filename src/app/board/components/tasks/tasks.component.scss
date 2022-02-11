@@ -1,6 +1,5 @@
 @mixin task{
-    display: flex;
-    padding: 15px 12px;
+    padding: 15px 0 15px 12px;
     background-color: white;
     border-bottom: 1px solid #ddd;
     box-shadow: 0 5px 5px -3px rgba(0,0,0,0.05),
@@ -13,6 +12,27 @@
     flex-grow: 1;
     .task{
         @include task();
+        display: flex;
+        justify-content: space-around;
+        transition: all 400ms;
+        .task__body{
+          flex-grow: 1;
+        }
+        .task__button{
+          display: flex;
+          justify-content: center;
+          .task__img{
+            border-radius: 0px 20px 20px 0px;
+            width: 30px;
+            img{
+              margin: 0px auto;
+            }
+            &:hover{
+              background-color: rgb(221, 82, 82);
+              color: white
+            }
+          }
+        }
     }
 }
 

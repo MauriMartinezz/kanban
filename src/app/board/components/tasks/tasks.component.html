@@ -7,6 +7,13 @@
   (cdkDropListDropped)="drop($event)"
 >
 <div class="task" *ngFor="let task of tasks" cdkDrag>
+  <div class="task__body">
     {{ task }}
+  </div>
+  <!-- <div class="task__button">
+    <div class="task__img">
+      <img width="20" src="/assets/icons/trash-icon.svg" alt="">
+    </div>
+  </div> -->
   </div>
 </div>

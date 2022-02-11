@@ -13,6 +13,7 @@ export class ColumnComponent implements OnInit {
 
   public showForm: boolean = true;
   public newTask: string = "";
+ 
 
   constructor() { }
 
@@ -25,21 +26,16 @@ export class ColumnComponent implements OnInit {
     console.log(this.newTask)
   }
 
-  // addTask(description: string, column: string){
-  //   if(this.newTask.length > 1){
-  //     this.board.columns.map(col => col.name === column ? this.board.columns[col.id - 1 ].tasks.push(description) : "")
-  //     this.newTask = ""
-  //     this.showForm = false;
-  //     console.log(this.board.columns)
-  //   } 
-    
-  // }
-
   addNewTask(description: string, board: string){
-    if(description.length > 2){
+    if(description){
       this.newTaskEvent.emit({description, board});
     }
     this.newTask = "";
-    this.showForm = false;
+    this.hideForm();
   }
+
+  hideForm(){
+    this.showForm = !this.showForm;
+  }
+
 }
