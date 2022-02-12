@@ -25,10 +25,10 @@
   <form
     autocomplete="off"
     class="task__form"
-    (ngSubmit)="addNewTask(newTask, column.name)"
     #myForm="ngForm"
+    (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)"
   >
-    <div class="field">
+    <div class="field animate__animated  animate__backInDown">
       <div class="control has-icons-right">
         <input
           class="input task__form--input is-rounded"
@@ -38,17 +38,19 @@
           required
           minlength="3"
           [(ngModel)]="newTask"
-          (keyup.enter)="addNewTask(newTask, column.name)"
+          (keyup.esc)="hideForm()"
+          (blur)="hideForm()"
         />
-        <span class="icon is-small is-right task__form--submit" (click)="addNewTask(newTask, column.name)">
+        <span
+            class="icon is-small is-right task__form--submit">
         <img width="20" src="assets/icons/add-icon.svg" alt="" />
       </span>
       </div>
        <p class="help is-danger"
-          *ngIf="!myForm.valid && myForm.touched">
+          *ngIf="!myForm.valid && !myForm.pristine">
         The task needs at least 3 characters
-      </p> 
+      </p>
     </div>
   </form>
 </div>
-<app-tasks [tasks]="column.tasks"></app-tasks>
+<app-tasks (onDeleteTask)="deleteTask($event)" [tasks]="column.tasks"></app-tasks>

@@ -1,7 +1,7 @@
 .column-header{
     display: flex;
     justify-content: space-between;
-    
+
 }
 .column-header--title{
     font-size: 20px;
@@ -34,7 +34,6 @@
 
 .task__form{
     padding: 10px 0;
-    animation: showForm 600ms;
     position: relative;
     .task__form--input{
         @include task();
@@ -51,43 +50,6 @@
     }
 }
 
-@keyframes showForm {
-    0%{
-        bottom: 100px;
-        opacity: 0;
-    }
-    10%{
-        bottom: 90px;
-        opacity: 0.34;
-
-    }
-    20%{
-        bottom: 80px;
-        opacity: 0.5;
-
-    }
-    30%{
-        bottom: 70px;
-        opacity: 0.6;
-    }
-    40%{
-        bottom: 60px;
-        opacity: 0.7;
-    }
-    50%{
-        bottom: 50px;
-
-    }
-    70%{
-        bottom: 30%
-    }
-    90%{
-        bottom: 10%;
-        opacity: 0.8;
-
-    }
-    100%{
-        bottom: 0px;
-        opacity: 1;
-    }
+.animate__backInDown{
+  --animate-duration: 0.4s;
 }

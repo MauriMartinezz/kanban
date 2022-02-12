@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tasks',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TasksComponent implements OnInit {
   @Input() tasks: string[] = [];
+  @Output() onDeleteTask = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit(): void {
@@ -27,5 +28,9 @@ export class TasksComponent implements OnInit {
         event.currentIndex
       );
     }
+  }
+
+  deleteTask(index: number){
+    this.onDeleteTask.emit(index);
   }
 }

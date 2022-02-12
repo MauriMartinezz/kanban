@@ -41,10 +41,12 @@ export class BoardComponent implements OnInit {
   addTask(e: Task){
     console.log(e)
     if(this.board.columns){
-      this.board.columns.map(col => col.name === e.board ? col.tasks.push(e.description) : "" );
+      this.board.columns.map(col => col.name === e.board ? col.tasks.unshift(e.description) : "" );
     }
   }
 
-
+  deleteTask(e: any){
+    this.board.columns.map
+  }
 
 }

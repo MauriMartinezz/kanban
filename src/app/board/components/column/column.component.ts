@@ -9,11 +9,13 @@ import {Task} from "../../models/task.model";
 })
 export class ColumnComponent implements OnInit {
   @Output() newTaskEvent = new EventEmitter<Task>();
+  @Output() indexDeleteTask = new EventEmitter<number>();
+
   @Input() column!: Column;
 
-  public showForm: boolean = true;
+  public showForm: boolean = false;
   public newTask: string = "";
- 
+
 
   constructor() { }
 
@@ -21,21 +23,23 @@ export class ColumnComponent implements OnInit {
   }
 
 
-  createTask(){
-    this.showForm = true;
-    console.log(this.newTask)
-  }
 
-  addNewTask(description: string, board: string){
-    if(description){
+  addNewTask(description: string, board: string, status: boolean | null){
+    if(description && status){
       this.newTaskEvent.emit({description, board});
+      this.newTask = "";
+      this.hideForm();
+    }else{
+      this.showForm = true;
     }
-    this.newTask = "";
-    this.hideForm();
   }
 
   hideForm(){
-    this.showForm = !this.showForm;
+    this.showForm = false;
+    this.newTask = "";
   }
 
+  deleteTask(event: any){
+    this.column.tasks.splice(event, 1)
+  }
 }
