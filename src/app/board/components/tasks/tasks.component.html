@@ -10,15 +10,11 @@
     cdkDrag
     #draggedTask
   >
-    <div class="task__body"
-    >
+    <div class="task__body">
       {{ task }}
     </div>
-    <div  class="task__button"
-          (click)="deleteTask(i)"
-          >
-      <div class="task__img"
-    >
+    <div class="task__button" (click)="deleteTask(i)">
+      <div class="task__img">
         <img src="/assets/icons/trash-icon.svg" alt="delete task icon" />
       </div>
     </div>

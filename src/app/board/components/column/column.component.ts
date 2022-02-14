@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Column } from '../../models/column.model';
 import {Task} from "../../models/task.model";

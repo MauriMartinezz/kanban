@@ -11,7 +11,6 @@ import {Task} from "../../models/task.model";
 })
 export class BoardComponent implements OnInit {
 
-
   board: Board = new Board("Test Board", [
     new Column(1, "Research",
     [

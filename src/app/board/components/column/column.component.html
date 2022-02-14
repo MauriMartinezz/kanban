@@ -20,7 +20,6 @@
   </ng-template>
 </div>
 
-
 <div *ngIf="showForm">
   <form
     autocomplete="off"
@@ -28,7 +27,7 @@
     #myForm="ngForm"
     (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)"
   >
-    <div class="field animate__animated  animate__backInDown">
+    <div class="field animate__animated animate__backInDown">
       <div class="control has-icons-right">
         <input
           class="input task__form--input is-rounded"
@@ -41,16 +40,17 @@
           (keyup.esc)="hideForm()"
           (blur)="hideForm()"
         />
-        <span
-            class="icon is-small is-right task__form--submit">
-        <img width="20" src="assets/icons/add-icon.svg" alt="" />
-      </span>
+        <span class="icon is-small is-right task__form--submit">
+          <img width="20" src="assets/icons/add-icon.svg" alt="" />
+        </span>
       </div>
-       <p class="help is-danger"
-          *ngIf="!myForm.valid && !myForm.pristine">
+      <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">
         The task needs at least 3 characters
       </p>
     </div>
   </form>
 </div>
-<app-tasks (onDeleteTask)="deleteTask($event)" [tasks]="column.tasks"></app-tasks>
+<app-tasks
+  (onDeleteTask)="deleteTask($event)"
+  [tasks]="column.tasks"
+></app-tasks>

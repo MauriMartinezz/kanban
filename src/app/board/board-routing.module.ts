@@ -15,10 +15,6 @@ const routes: Routes = [
           path: "kanban",
           component: MainViewComponent
       },
-      {
-        path: "**",
-        redirectTo: ""
-      }
     ]
   }
 ];
