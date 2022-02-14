@@ -42,4 +42,5 @@ export class ColumnComponent implements OnInit {
   deleteTask(event: any){
     this.column.tasks.splice(event, 1)
   }
+
 }
