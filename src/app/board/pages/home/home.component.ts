@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   }
 
   setBackground(): string {
-    return `linear-gradient(45deg, ${this.firstColor}, ${this.secondColor}));`;
+    console.log(this.firstColor);
+    // return `linear-gradient(to right, #${this.firstColor}, #${this.secondColor});`;
+    return `#${this.firstColor}`;
   }
 }
