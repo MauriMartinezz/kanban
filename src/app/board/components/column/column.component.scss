@@ -5,7 +5,7 @@
 .column-header--title {
   font-size: 20px;
   font-weight: 800;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -22,8 +22,7 @@
   display: flex;
   background-color: white;
   border-bottom: 1px solid #ddd;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05),
-    0 3px 14px 2px tgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px tgba(0, 0, 0, 0.05);
   padding: 15px 12px;
 }
 
@@ -46,5 +45,5 @@
 }
 
 .animate__backInDown {
-  --animate-duration: 0.4s;
+  --animate-duration: 0.8s;
 }

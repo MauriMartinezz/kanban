@@ -1,5 +1,16 @@
-<h2>Tus tableros</h2>
+<div class="boards__container columns p-5">
+  <div class="column is-2 card mr-3">
+    <div class="card-content" routerLink="/kanban">
+      <p class="title is-3 has-background-primary">John Smith</p>
+    </div>
+  </div>
 
-<button class="js-modal-trigger" data-target="modal-js-example">
-    <app-create-board-modal></app-create-board-modal>
+  <div class="column is-2 card" [ngStyle]="{ background: setBackground() }">
+    <div class="card-content">
+      <p class="title is-3">Ejemplo de tablero</p>
+    </div>
+  </div>
+</div>
+<button class="" data-target="">
+  <app-create-board-modal></app-create-board-modal>
 </button>

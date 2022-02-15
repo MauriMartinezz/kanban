@@ -3,13 +3,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  firstColor: string = '';
+  secondColor: string = '';
+  constructor() {}
 
   ngOnInit(): void {
+    this.firstColor = Math.floor(Math.random() * 16777215).toString(16);
+    this.secondColor = Math.floor(Math.random() * 16777215).toString(16);
   }
 
+  setBackground(): string {
+    return `linear-gradient(45deg, ${this.firstColor}, ${this.secondColor}));`;
+  }
 }

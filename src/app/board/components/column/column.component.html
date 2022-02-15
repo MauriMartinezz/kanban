@@ -11,11 +11,7 @@
   </div>
   <ng-template #closeForm>
     <span (click)="hideForm()">
-      <img
-        width="30"
-        src="/assets/icons/close-button.svg"
-        alt="Close form button"
-      />
+      <img width="30" src="/assets/icons/close-button.svg" alt="Close form button" />
     </span>
   </ng-template>
 </div>
@@ -41,16 +37,11 @@
           (blur)="hideForm()"
         />
         <span class="icon is-small is-right task__form--submit">
-          <img width="20" src="assets/icons/add-icon.svg" alt="" />
+          <img width="20" src="assets/icons/add-icon.svg" alt="add task icon" />
         </span>
       </div>
-      <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">
-        The task needs at least 3 characters
-      </p>
+      <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">The task needs at least 3 characters</p>
     </div>
   </form>
 </div>
-<app-tasks
-  (onDeleteTask)="deleteTask($event)"
-  [tasks]="column.tasks"
-></app-tasks>
+<app-tasks (onDeleteTask)="deleteTask($event)" [tasks]="column.tasks"></app-tasks>
