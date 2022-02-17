@@ -1,1 +1,30 @@
-esto es un modal!
+<div class="modal-2">
+  <div class="modal-card">
+    <div class="modal__body">
+      <fieldset>
+        <div class="field">
+          <label class="label">Board Name</label>
+          <div class="control">
+            <input class="input is-rounded" type="text" placeholder="e.g Work" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">column name</label>
+          <div class="control">
+            <input class="input is-rounded" type="email" placeholder="e.g. TODO" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control"></div>
+        </div>
+      </fieldset>
+      <div class="modal__buttons is-flex is-justify-content-end">
+        <button (click)="closeModal()" class="btn">
+          <img src="/assets/icons/close-button.svg" alt="" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

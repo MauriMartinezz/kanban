@@ -12,6 +12,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,10 +21,10 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
     AppRoutingModule,
     BoardModule,
     SharedModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFireModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

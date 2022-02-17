@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-create-board-modal',
   templateUrl: './create-board-modal.component.html',
-  styleUrls: ['./create-board-modal.component.scss']
+  styleUrls: ['./create-board-modal.component.scss'],
 })
 export class CreateBoardModalComponent implements OnInit {
+  @Output() modalClosed: EventEmitter<boolean> = new EventEmitter();
+  constructor(private modalService: ModalService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  closeModal() {
+    this.modalService.$modal.emit(false);
   }
-
 }

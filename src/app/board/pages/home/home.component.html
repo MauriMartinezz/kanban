@@ -1,16 +1,17 @@
 <div class="boards__container columns p-5">
-  <div class="column is-2 card mr-3" routerLink="/kanban" [ngStyle]="{ background: setBackground() }">
+  <div class="column is-2 card mr-3" routerLink="/kanban" [ngStyle]="{ background: '#6b3dfa' }">
     <div class="card-content">
-      <p class="title is-3" [ngStyle]="{ color: setTextColor() }">Ejemplo de tablero</p>
+      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
     </div>
   </div>
 
-  <div class="column is-2 card" [ngStyle]="{ background: backgroundColor }">
+  <div class="column is-2 card" [ngStyle]="{ background: '#6b3dfa' }">
     <div class="card-content">
-      <p class="title is-3" [ngStyle]="{ color: setTextColor() }">Ejemplo de tablero</p>
+      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
     </div>
   </div>
 </div>
-<button class="" data-target="">
+<button class="" (click)="openModal()" data-target="">Abrir modal</button>
+<div class="create__board" *ngIf="modalSwitch">
   <app-create-board-modal></app-create-board-modal>
-</button>
+</div>
