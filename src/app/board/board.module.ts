@@ -12,8 +12,8 @@ import { BoardComponent } from './components/board/board.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateBoardModalComponent } from './components/create-board-modal/create-board-modal.component';
 import { ColumnComponent } from './components/column/column.component';
-
-
+import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +22,9 @@ import { ColumnComponent } from './components/column/column.component';
     BoardComponent,
     HomeComponent,
     CreateBoardModalComponent,
-    ColumnComponent
+    ColumnComponent,
+    ColorPickerComponent,
   ],
-  imports: [
-    CommonModule,
-    BoardRoutingModule,
-    DragDropModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, BoardRoutingModule, DragDropModule, FormsModule, ReactiveFormsModule, ColorPickerModule],
 })
-export class BoardModule { }
+export class BoardModule {}

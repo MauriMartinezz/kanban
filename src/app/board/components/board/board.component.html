@@ -4,13 +4,15 @@
   </div>
   <div class="board-wrapper">
     <div class="board-columns" cdkDropListGroup>
-      <div class="board-column" *ngFor="let column of board.columns">
-        <app-column
-          [column]="column"
-          (indexDeleteTask)="deleteTask($event)"
-          (newTaskEvent)="addTask($event)"
-        ></app-column>
+      <div class="board-column">
+        <app-column></app-column>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <app-column
+[column]="column"
+(indexDeleteTask)="deleteTask($event)"
+(newTaskEvent)="addTask($event)"
+></app-column> -->

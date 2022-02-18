@@ -6,8 +6,11 @@
   .modal-card {
     background: #fafafa;
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px 40px;
     box-shadow: 0px 0px 10px rgb(126, 126, 126);
+    .modal__header {
+      border-bottom: 1px solid rgba(114, 96, 96, 0.5);
+    }
   }
 }
 .btn {
@@ -24,10 +27,4 @@
       // background-color: red;
     }
   }
-}
-
-
-.title{
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(114, 96, 96, 0.5);
 }

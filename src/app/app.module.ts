@@ -7,12 +7,10 @@ import { BoardModule } from './board/board.module';
 import { SharedModule } from './shared/shared.module';
 
 import { environment } from '../environments/environment';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideDatabase, getDatabase } from '@angular/fire/database';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +21,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
-  providers: [AngularFireModule],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

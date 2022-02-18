@@ -1,39 +1,45 @@
-<div class="modal-2 animate__animated  animate__fadeInDown animate__faster">
+<div class="modal-2 animate__animated animate__fadeInDown animate__faster">
   <div class="modal-card">
-    <div class="modal__header">
+    <div class="modal__header is-flex is-justify-content-space-between">
       <h2 class="title">Crear tablero</h2>
+      <div class="modal__buttons">
+        <button (click)="closeModal()" class="delete is-large"></button>
+      </div>
     </div>
 
     <div class="modal__body">
-
-      <form class="mt-4">
+      <form class="mt-4" (ngSubmit)="addBoard(value)" (keyup.enter)="addBoard(value)">
         <div class="field">
           <label class="label">Board Name</label>
           <div class="control">
-            <input class="input is-rounded" type="text" placeholder="e.g Work" />
-          </div>
-        </div>
-
-        <div class="field column is-four-fifths is-justify-content-flex-end">
-          <label class="label ">column name</label>
-          <div class="control is-flex is-justify-content-end">
-            <input class="input is-rounded " type="email" placeholder="e.g. TODO" />
+            <input [(ngModel)]="value" name="input" class="input is-rounded" type="text" placeholder="e.g Work" />
           </div>
         </div>
         <div class="field">
-          <div class="control"></div>
+          <div class="control colorPaletteContainer">
+            <label class="label">Pick a background Color:</label>
+
+            <app-color-picker></app-color-picker>
+          </div>
+        </div>
+
+        <div class="is-flex is-justify-content-end">
+          <button type="submit" class="button is-info">save</button>
         </div>
       </form>
-
-
-      <div class="modal__buttons is-flex is-justify-content-end">
-        <!-- <button (click)="closeModal()" class="btn">
-          <img src="/assets/icons/close-button.svg" alt="" />
-        </button> -->
-        <button (click)="closeModal()" class="delete is-large">
-
-        </button>
-      </div>
     </div>
+
+    <!-- <form action="">
+      <div class="form-group">
+        <label>Pick or enter color</label>
+        <input
+          class="form-control"
+          [(colorPicker)]="color"
+          cpWidth="230px"
+          cpHeight="100px"
+          [style.background]="color"
+        />
+      </div>
+    </form> -->
   </div>
 </div>

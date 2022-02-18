@@ -12,7 +12,15 @@ export class FirestoreService {
     return this.ejemplo$;
   }
 
-  constructor(firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore) {
     this.ejemplo$ = firestore.collection('users').valueChanges();
+  }
+
+  createBoard(data: string) {
+    this.firestore.collection('users').add({ name: data });
+  }
+
+  addColumn(data: string) {
+    this.firestore.collection('users').doc('pgC4Uk63cdEMniSdeCd1').set({ nashe: data });
   }
 }
