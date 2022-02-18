@@ -5,9 +5,15 @@
     </div>
   </div>
 
-  <div class="column is-2 card" [ngStyle]="{ background: '#6b3dfa' }">
+  <div class="column is-2 card mr-3" [ngStyle]="{ background: '#6b3dfa' }">
     <div class="card-content">
       <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
+    </div>
+  </div>
+
+  <div class="column is-2 card" (click)="openModal()" [ngStyle]="{ background: '#6b3dfa' }">
+    <div class="card-content">
+      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Crear nuevo tablero</p>
     </div>
   </div>
 </div>

@@ -20,8 +20,14 @@
     border-radius: 50%;
     transition: all 300ms;
     &:hover {
-      transform: scale(1.05);
-      background-color: red;
+      transform: scale(1.1);
+      // background-color: red;
     }
   }
+}
+
+
+.title{
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(114, 96, 96, 0.5);
 }
