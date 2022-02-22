@@ -1,19 +1,25 @@
 import { Board } from './../models/board.model';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Observable, Subscriber } from 'rxjs';
 import { doc, onSnapshot } from 'firebase/firestore';
 
+export interface Item {
+  name: string;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
   private ejemplo$: Observable<any[]>;
-  private itemsCollection!: AngularFirestoreCollection<any>;
-  items!: Observable<any[]>;
+  // private itemsCollection!: any;
+  // items!: Observable<any[]>;
   public get ejemplo(): Observable<any[]> {
     return this.ejemplo$;
   }
+
+  private itemDoc!: AngularFirestoreDocument<any>;
+  item!: Observable<Item>;
 
   constructor(private firestore: AngularFirestore) {
     this.ejemplo$ = firestore.collection('users').valueChanges();
@@ -23,16 +29,11 @@ export class FirestoreService {
     this.firestore.collection('users').add(data);
   }
 
-  getBoards(): any {
-    return this.firestore.collection('users').ref.get();
+  getBoards(): Observable<any> {
+    return this.firestore.collection('users').snapshotChanges();
   }
 
-  addColumn(data: string) {
-    // this.firestore.collection('users').doc('pgC4Uk63cdEMniSdeCd1').set({ nashe: data });
-    // let coll = this.firestore.collection('users').valueChanges();
-    // let coll = this.firestore.collection('/users/');
-
-    this.itemsCollection = this.firestore.collection('users');
-    this.items = this.itemsCollection.valueChanges();
+  addColumn(board: Board) {
+    this.firestore.collection('boards').add(board);
   }
 }

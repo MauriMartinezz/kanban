@@ -1,20 +1,28 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:400,800,900");
-$family-sans-serif: "Nunito", sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:400,800,900');
+$family-sans-serif: 'Nunito', sans-serif;
 
-
+@import '~ngx-toastr/toastr';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
 
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
-
-html, body{
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
-html{
-      background: #1CD8D2;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #93EDC7, #1CD8D2);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #93EDC7, #1CD8D2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      overflow-y: auto !important;
+html {
+  background: #1cd8d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #93edc7, #1cd8d2); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow-y: auto !important;
 }

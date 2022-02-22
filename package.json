@@ -25,6 +25,7 @@
     "bulma": "^0.9.3",
     "firebase": "^9.6.6",
     "ngx-colors": "^3.0.2",
+    "ngx-toastr": "^14.2.1",
     "rxfire": "^6.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

@@ -15,7 +15,6 @@ import { ColumnComponent } from './components/column/column.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { NgxColorsModule } from 'ngx-colors';
 
-
 @NgModule({
   declarations: [
     MainViewComponent,
@@ -26,13 +25,6 @@ import { NgxColorsModule } from 'ngx-colors';
     ColumnComponent,
     ColorPickerComponent,
   ],
-  imports: [
-    CommonModule,
-    BoardRoutingModule,
-    DragDropModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxColorsModule
-  ],
+  imports: [CommonModule, BoardRoutingModule, DragDropModule, FormsModule, ReactiveFormsModule, NgxColorsModule],
 })
 export class BoardModule {}
