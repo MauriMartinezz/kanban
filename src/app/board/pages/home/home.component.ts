@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   get results() {
     return this.firestoreService.ejemplo.subscribe(console.log);
   }
-
+color: string = "#e3e3e3"
   constructor(
     private boardService: BoardService,
     private firestoreService: FirestoreService,

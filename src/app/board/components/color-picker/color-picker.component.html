@@ -1,8 +1,11 @@
-<div class="">
-  <span
-    [cpToggle]="true"
-    [cpDialogDisplay]="'inline'"
-    [(colorPicker)]="arrayColors[selectedColor]"
-    [cpDisableInput]="true"
-  ></span>
+<div class="color__picker">
+  <ngx-colors
+    ngx-colors-trigger
+    [hideTextInput]="true"
+    [hideColorPicker]="true"
+    ngx-colors-trigger
+    [(ngModel)]="color"
+    (change)="getColor()"
+  ></ngx-colors>
 </div>
+<!-- <ngx-colors ngx-colors-trigger style="display: inline-block; margin:5px;" [formControl]="colorFormControl"></ngx-colors> -->

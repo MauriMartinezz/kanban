@@ -7,6 +7,7 @@ import { Column } from './column.model';
 
 export interface Board {
   name: string;
-  columns: Column[];
+  columns?: Column[];
   background?: string;
+  id: string;
 }

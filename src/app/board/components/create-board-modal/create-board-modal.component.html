@@ -18,28 +18,13 @@
         <div class="field">
           <div class="control colorPaletteContainer">
             <label class="label">Pick a background Color:</label>
-
-            <app-color-picker></app-color-picker>
+            <app-color-picker (onBoardBackground)="backgroundColor($event)"></app-color-picker>
           </div>
         </div>
-
         <div class="is-flex is-justify-content-end">
           <button type="submit" class="button is-info">save</button>
         </div>
       </form>
     </div>
-
-    <!-- <form action="">
-      <div class="form-group">
-        <label>Pick or enter color</label>
-        <input
-          class="form-control"
-          [(colorPicker)]="color"
-          cpWidth="230px"
-          cpHeight="100px"
-          [style.background]="color"
-        />
-      </div>
-    </form> -->
   </div>
 </div>

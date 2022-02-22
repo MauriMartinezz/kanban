@@ -10,7 +10,7 @@ import { ModalService } from '../../services/modal.service';
 export class CreateBoardModalComponent implements OnInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter();
   constructor(private modalService: ModalService, private firestoreService: FirestoreService) {}
-
+  color: string = '#e5e6e6';
   value: string = '';
   ngOnInit(): void {}
 
@@ -19,8 +19,11 @@ export class CreateBoardModalComponent implements OnInit {
   }
 
   addBoard(value: string) {
-    // this.firestoreService.createBoard(value);
-    this.firestoreService.addColumn(value);
-    console.log(value);
+    // this.firestoreService.addColumn(value).subscribe(console.log);
+    console.log(this.firestoreService.addColumn(value));
+    this.closeModal();
+  }
+  backgroundColor(e: any) {
+    console.log('background: ' + e);
   }
 }
