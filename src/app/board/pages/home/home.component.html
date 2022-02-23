@@ -1,5 +1,5 @@
 <div class="boards__container columns p-5">
-  <div class="column is-2 card mr-3" routerLink="/kanban" [ngStyle]="{ background: '#6b3dfa' }">
+  <!-- <div class="column is-2 card mr-3" routerLink="/kanban" [ngStyle]="{ background: '#6b3dfa' }">
     <div class="card-content">
       <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
     </div>
@@ -8,6 +8,11 @@
   <div class="column is-2 card mr-3" [ngStyle]="{ background: '#6b3dfa' }">
     <div class="card-content">
       <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
+    </div>
+  </div> -->
+  <div *ngFor="let board of boards" class="column is-2 card mr-3" [ngStyle]="{ background: board.boardBackground }">
+    <div class="card-content">
+      <p class="title is-3" [ngStyle]="{ color: textColor }">{{ board.boardName }}</p>
     </div>
   </div>
 
@@ -21,5 +26,3 @@
 <div class="create__board" *ngIf="modalSwitch">
   <app-create-board-modal></app-create-board-modal>
 </div>
-
-

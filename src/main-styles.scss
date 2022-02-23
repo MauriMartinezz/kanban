@@ -1,11 +1,7 @@
+@import '~ngx-toastr/toastr';
+
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:400,800,900');
 $family-sans-serif: 'Nunito', sans-serif;
-
-@import '~ngx-toastr/toastr';
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-@import '~ngx-toastr/toastr-bs4-alert';
 
 $control-border-width: 2px;
 $input-border-color: transparent;

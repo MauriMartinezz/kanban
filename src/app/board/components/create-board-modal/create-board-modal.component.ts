@@ -1,3 +1,4 @@
+import { BoardService } from './../../services/board.service';
 import { Component, DoCheck, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -15,22 +16,18 @@ export class CreateBoardModalComponent implements OnInit {
   newBoardForm: FormGroup = this.fb.group({
     boardName: ['', [Validators.required, Validators.minLength(3)]],
     boardBackground: [''],
+    bid: [[Validators.required]],
   });
 
   constructor(
     private _modalService: ModalService,
     private _firestoreService: FirestoreService,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _boardService: BoardService
   ) {}
   boardName!: string;
-  ngOnInit(): void {
-    // this._firestoreService.getBoards().subscribe((doc) => {
-    //   doc.map((element: any) => {
-    //     console.log(element.payload.doc.data());
-    //   });
-    // });
-  }
+  ngOnInit(): void {}
   closeModal() {
     this._modalService.$modal.emit(false);
   }
@@ -41,11 +38,11 @@ export class CreateBoardModalComponent implements OnInit {
       e.preventDefault();
     } else {
       this.newBoardForm.controls['boardBackground'].setValue(this.background);
-      this._firestoreService.addColumn(this.newBoardForm.value);
+      this.newBoardForm.controls['bid'].setValue(this._boardService.generateId());
+      this._firestoreService.createBoard(this.newBoardForm.value);
       this.newBoardForm.reset();
       this.closeModal();
-
-      this.toastr.success('heyy');
+      this.toastr.success('Tablero creado');
     }
   }
   backgroundColor(e: string) {

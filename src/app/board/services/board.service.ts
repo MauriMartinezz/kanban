@@ -12,11 +12,11 @@ export class BoardService {
   constructor() {}
 
   getBackgroundColor(): string {
-    this.rValue = Number(Math.floor(Math.random() * 255).toString(10));
-    this.gValue = Number(Math.floor(Math.random() * 255).toString(10));
-    this.bValue = Number(Math.floor(Math.random() * 255).toString(10));
+    // this.rValue = Number(Math.floor(Math.random() * 255).toString(10));
+    // this.gValue = Number(Math.floor(Math.random() * 255).toString(10));
+    // this.bValue = Number(Math.floor(Math.random() * 255).toString(10));
 
-    this.backgroundColor = [this.rValue, this.gValue, this.bValue];
+    // this.backgroundColor = [this.rValue, this.gValue, this.bValue];
     console.log(this.backgroundColor);
 
     return `rgb(${this.backgroundColor})`;
@@ -38,8 +38,8 @@ export class BoardService {
     return Math.floor((brightest + 0.05) / (darkest + 0.05));
   }
 
-  setBoardTextColor(): string {
-    let contrast = this.getContrast([255, 255, 255], this.backgroundColor);
+  setBoardTextColor(backgroundColor: number[]): string {
+    let contrast = this.getContrast([255, 255, 255], backgroundColor);
     let textColor: string;
     if (contrast > 4) {
       textColor = '#ffffff';
@@ -49,5 +49,11 @@ export class BoardService {
     return textColor;
   }
 
+  generateId(): string {
+    let id = Math.floor((1 + Math.random()) * 0x100000)
+      .toString(16)
+      .substring(1);
 
+    return id;
+  }
 }
