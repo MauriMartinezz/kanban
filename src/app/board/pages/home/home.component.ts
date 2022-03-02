@@ -37,20 +37,17 @@ export class HomeComponent implements OnInit {
   }
 
   fetchBoards() {
-    // this._firestoreService.getBoards();
-    this._firestoreService.getBoards();
-    // this._firestoreService.getBoards().subscribe((doc) =>
-    //   doc.map((element: any) => {
-    //     // let data = element.doc.payload.data();
-    //     this.boards.push(element);
-    //   })
-    // );
-    // console.log(this.boards);
+    this._firestoreService.getBoards().subscribe((doc) =>
+      doc.forEach((element: any, index: number) => {
+        this.boards[index] = element.payload.doc.data();
+      })
+    );
+  }
+
+  deleteBoard(id: string) {
+    this._firestoreService
+      .deleteBoard(id)
+      .then(() => console.log('board deleted'))
+      .catch((e) => console.log(e));
   }
 }
-
-// this._firestoreService.getBoards().subscribe((doc) => {
-//   doc.map((element: any) => {
-//     console.log(element.payload.doc.data());
-//   });
-// });

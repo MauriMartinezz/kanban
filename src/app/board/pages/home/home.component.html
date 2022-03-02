@@ -1,28 +1,25 @@
 <div class="boards__container columns p-5">
-  <!-- <div class="column is-2 card mr-3" routerLink="/kanban" [ngStyle]="{ background: '#6b3dfa' }">
-    <div class="card-content">
-      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
-    </div>
-  </div>
-
-  <div class="column is-2 card mr-3" [ngStyle]="{ background: '#6b3dfa' }">
-    <div class="card-content">
-      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Ejemplo de tablero</p>
-    </div>
-  </div> -->
-  <div *ngFor="let board of boards" class="column is-2 card mr-3" [ngStyle]="{ background: board.boardBackground }">
+  <div
+    *ngFor="let board of boards"
+    class="column is-2 card mr-3"
+    [ngStyle]="{ background: board.boardBackground }"
+    [routerLink]="['/kanban', board.bid]"
+  >
     <div class="card-content">
       <p class="title is-3" [ngStyle]="{ color: textColor }">{{ board.boardName }}</p>
     </div>
   </div>
 
-  <div class="column is-2 card" (click)="openModal()" [ngStyle]="{ background: '#6b3dfa' }">
+  <div
+    class="column is-2 card has-text-centered"
+    (click)="openModal()"
+    [ngStyle]="{ background: 'rgba(255,255,255,0.3)' }"
+  >
     <div class="card-content">
-      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Crear nuevo tablero</p>
+      <p class="title is-3" [ngStyle]="{ color: '#363636' }">Create board</p>
     </div>
   </div>
 </div>
-<button class="" (click)="openModal()" data-target="">Abrir modal</button>
 <div class="create__board" *ngIf="modalSwitch">
   <app-create-board-modal></app-create-board-modal>
 </div>

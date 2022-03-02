@@ -6,8 +6,8 @@ import { Column } from './column.model';
 // }
 
 export interface Board {
-  boardName: string;
-  columns?: Column[];
-  boardBackground: string;
   bid: string;
+  boardName: string;
+  boardBackground: string;
+  columns?: Column[];
 }

@@ -13,47 +13,43 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FirestoreService {
-  // public get ejemplo(): Observable<any[]> {
-  //   return this.ejemplo$;
-  // }
-
   private boards$: Board[] = [];
+  private board!: Board;
 
   public get boardsGetter(): Board[] {
     return this.boards$;
   }
 
-  constructor(private firestore: AngularFirestore) {}
-
-  getBoards(): any {
-    // getBoards(): Observable<DocumentChangeAction<unknown>[]> {
-    return this.firestore
-      .collection('boards')
-      .snapshotChanges()
-      .pipe(
-        map((payload) => {
-          payload.map((data) => {
-            data.payload.doc.data();
-            console.log(data);
-          });
-        })
-      );
+  public set boardSetter(payload: Board) {
+    this.board = payload;
   }
 
-  createBoard(board: Board) {
-    this.firestore.collection('boards').add(board);
+  constructor(private firestore: AngularFirestore) {}
+
+  getBoards(): Observable<DocumentChangeAction<unknown>[]> {
+    return this.firestore.collection('boards', (ref) => ref.orderBy('bid', 'asc')).snapshotChanges();
+  }
+
+  getBoardId(): any {
+    return this.firestore.collection('boards', (ref) => ref.orderBy('bid', 'asc')).snapshotChanges();
+  }
+  createBoard() {
+    this.firestore.collection('boards').add(this.board);
   }
 
   addColumn(column: string): Observable<any> {
     return this.firestore.collection('boards').snapshotChanges();
   }
-}
 
-// createBoard(data: Board) {
-//   this.firestore.collection('users').add(data);
-// }
-// this._firestoreService.getBoards().subscribe((doc) => {
-//   doc.map((element: any) => {
-//     console.log(element.payload.doc.data());
-//   });
-// });
+  generateId(): string {
+    let id = Math.floor((1 + Math.random()) * 0x100000)
+      .toString(16)
+      .substring(1);
+
+    return id;
+  }
+
+  deleteBoard(id: string): Promise<any> {
+    return this.firestore.collection('boards').doc(id).delete();
+  }
+}

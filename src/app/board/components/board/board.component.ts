@@ -13,9 +13,9 @@ export class BoardComponent implements OnInit {
   constructor(private _firestore: FirestoreService) {}
 
   ngOnInit(): void {
-    this._firestore.addColumn('ejemplo').subscribe((doc: any) => {
-      doc.map((m: any) => console.log(m.payload.doc.data()));
-    });
+    // this._firestore.addColumn('ejemplo').subscribe((doc: any) => {
+    //   doc.map((m: any) => console.log(m.payload.doc.data()));
+    // });
   }
 }
 

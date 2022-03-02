@@ -17,7 +17,7 @@ export class BoardService {
     // this.bValue = Number(Math.floor(Math.random() * 255).toString(10));
 
     // this.backgroundColor = [this.rValue, this.gValue, this.bValue];
-    console.log(this.backgroundColor);
+    // console.log(this.backgroundColor);
 
     return `rgb(${this.backgroundColor})`;
   }
