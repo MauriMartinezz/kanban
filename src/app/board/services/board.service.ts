@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  DocumentChangeAction
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Board } from '../models/board.model';
 
@@ -10,8 +7,9 @@ import { Board } from '../models/board.model';
   providedIn: 'root'
 })
 export class BoardService {
-  private boards: BehaviorSubject<Observable<DocumentChangeAction<unknown>[]>> =
-    new BehaviorSubject(this.getBoards());
+  private boards: BehaviorSubject<Observable<any>> = new BehaviorSubject(
+    this.getBoards()
+  );
 
   get boardsObservableGetter() {
     return this.boards.asObservable();
@@ -22,9 +20,9 @@ export class BoardService {
   }
   constructor(private firestore: AngularFirestore) {}
 
-  getBoards(): Observable<DocumentChangeAction<unknown>[]> {
+  getBoards(): Observable<unknown[]> {
     return this.firestore
-      .collection('boards', ref => ref.orderBy('bid', 'asc'))
-      .snapshotChanges();
+      .collection('boards', (ref: any) => ref.orderBy('bid', 'asc'))
+      .valueChanges();
   }
 }

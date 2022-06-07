@@ -1,6 +1,6 @@
-<div class="boards__container columns p-5">
+<div class="boards__container columns p-5" *ngIf="board$ | async">
   <div
-    *ngFor="let board of boards"
+    *ngFor="let board of motley | async"
     class="column is-2 card mr-3"
     [ngStyle]="{ background: board.boardBackground }"
     [routerLink]="['/kanban', board.bid]">

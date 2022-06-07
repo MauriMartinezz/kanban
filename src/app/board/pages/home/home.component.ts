@@ -18,12 +18,15 @@ export class HomeComponent implements OnInit {
 
   textColor: string = '#e3e3e3';
   cardBackground: string = '#cb3dff';
-
+  board$!: Observable<any>;
   constructor(
     private _colorService: ColorService,
     private _firestoreService: FirestoreService,
-    private _modalService: ModalService
-  ) {}
+    private _modalService: ModalService,
+    private _boardService: BoardService
+  ) {
+    this.board$ = _boardService.boardsObservableGetter;
+  }
 
   ngOnInit(): void {
     this._modalService.$modal.subscribe(
@@ -31,20 +34,24 @@ export class HomeComponent implements OnInit {
     );
     this.cardBackground = this._colorService.getBackgroundColor();
     this.textColor = this._colorService.setBoardTextColor([1, 2, 3]);
-    this.fetchBoards();
+    // this.fetchBoards();
+    this.board$.subscribe(m => m.subscribe(console.log));
   }
 
   openModal() {
     this.modalSwitch = true;
   }
 
-  fetchBoards() {
-    this._firestoreService.getBoards().subscribe(doc =>
-      doc.forEach((element: any, index: number) => {
-        this.boards[index] = element.payload.doc.data();
-      })
-    );
-  }
+  // fetchBoards() {
+  //   // this._firestoreService.getBoards().subscribe(doc =>
+  //   //   doc.forEach((element: any, index: number) => {
+  //   //     this.boards[index] = element.payload.doc.data();
+  //   //     this._boardService.boardsDataSetter = element.paylad.doc.data();
+  //   //   })
+  //   // );
+  //   this._boardService.getBoards().subscribe(console.log);
+  //   // console.log(this.board$.subscribe(m => m));
+  // }
 
   deleteBoard(id: string) {
     this._firestoreService
