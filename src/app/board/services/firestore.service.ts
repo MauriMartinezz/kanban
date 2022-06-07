@@ -5,12 +5,12 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
-  DocumentChangeAction,
+  DocumentChangeAction
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class FirestoreService {
   private boards$: Board[] = [];
@@ -27,11 +27,15 @@ export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
 
   getBoards(): Observable<DocumentChangeAction<unknown>[]> {
-    return this.firestore.collection('boards', (ref) => ref.orderBy('bid', 'asc')).snapshotChanges();
+    return this.firestore
+      .collection('boards', ref => ref.orderBy('bid', 'asc'))
+      .snapshotChanges();
   }
 
   getBoardId(): any {
-    return this.firestore.collection('boards', (ref) => ref.orderBy('bid', 'asc')).snapshotChanges();
+    return this.firestore
+      .collection('boards', ref => ref.orderBy('bid', 'asc'))
+      .snapshotChanges();
   }
   createBoard() {
     this.firestore.collection('boards').add(this.board);

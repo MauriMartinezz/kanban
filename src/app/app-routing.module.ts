@@ -4,11 +4,11 @@ import { Error404Component } from './shared/error404/error404.component';
 
 const routes: Routes = [
   {
-    path: "",
-    loadChildren: ()=> import("./board/board.module").then(m=> m.BoardModule)
+    path: '',
+    loadChildren: () => import('./board/board.module').then(m => m.BoardModule)
   },
   {
-    path: "**",
+    path: '**',
     component: Error404Component
   }
 ];
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

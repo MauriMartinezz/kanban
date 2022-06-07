@@ -9,18 +9,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent,
+        component: HomeComponent
       },
       {
         path: 'kanban/:bid',
-        component: MainViewComponent,
-      },
-    ],
-  },
+        component: MainViewComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class BoardRoutingModule {}

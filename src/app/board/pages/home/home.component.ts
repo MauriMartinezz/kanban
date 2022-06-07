@@ -9,7 +9,7 @@ import { ModalService } from '../../services/modal.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   modalSwitch: boolean = false;
@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._modalService.$modal.subscribe((value: boolean) => (this.modalSwitch = value));
+    this._modalService.$modal.subscribe(
+      (value: boolean) => (this.modalSwitch = value)
+    );
     this.cardBackground = this._boardService.getBackgroundColor();
     this.textColor = this._boardService.setBoardTextColor([1, 2, 3]);
     this.boards = this._firestoreService.boardsGetter;
@@ -37,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchBoards() {
-    this._firestoreService.getBoards().subscribe((doc) =>
+    this._firestoreService.getBoards().subscribe(doc =>
       doc.forEach((element: any, index: number) => {
         this.boards[index] = element.payload.doc.data();
       })
@@ -48,6 +50,6 @@ export class HomeComponent implements OnInit {
     this._firestoreService
       .deleteBoard(id)
       .then(() => console.log('board deleted'))
-      .catch((e) => console.log(e));
+      .catch(e => console.log(e));
   }
 }

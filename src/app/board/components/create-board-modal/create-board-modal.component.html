@@ -13,16 +13,21 @@
         class="mt-4"
         [formGroup]="newBoardForm"
         (ngSubmit)="addBoard($event)"
-        (keyup.enter)="addBoard($event)"
-      >
+        (keyup.enter)="addBoard($event)">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <input formControlName="boardName" class="input is-rounded" type="text" placeholder="e.g Work" />
+            <input
+              formControlName="boardName"
+              class="input is-rounded"
+              type="text"
+              placeholder="e.g Work" />
             <span
-              *ngIf="newBoardForm.controls['boardName'].invalid && newBoardForm.controls['boardName'].touched"
-              class="has-text-danger"
-            >
+              *ngIf="
+                newBoardForm.controls['boardName'].invalid &&
+                newBoardForm.controls['boardName'].touched
+              "
+              class="has-text-danger">
               Name must have at least 3 characters
             </span>
           </div>
@@ -30,11 +35,17 @@
         <div class="field">
           <label class="label">Pick a background Color:</label>
           <div class="control colorPaletteContainer">
-            <app-color-picker (onBoardBackground)="backgroundColor($event)"></app-color-picker>
+            <app-color-picker
+              (onBoardBackground)="backgroundColor($event)"></app-color-picker>
           </div>
         </div>
         <div class="is-flex is-justify-content-end">
-          <button [disabled]="newBoardForm.invalid" type="submit" class="button is-info">save</button>
+          <button
+            [disabled]="newBoardForm.invalid"
+            type="submit"
+            class="button is-info">
+            save
+          </button>
         </div>
       </form>
     </div>

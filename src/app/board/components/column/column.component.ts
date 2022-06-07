@@ -1,7 +1,11 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from '@angular/cdk/drag-drop';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Column } from '../../models/column.model';
-import {Task} from "../../models/task.model";
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-column',
@@ -15,33 +19,28 @@ export class ColumnComponent implements OnInit {
   @Input() column!: Column;
 
   public showForm: boolean = false;
-  public newTask: string = "";
+  public newTask: string = '';
 
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-
-
-  addNewTask(description: string, board: string, status: boolean | null){
-    if(description && status){
-      this.newTaskEvent.emit({description, board});
-      this.newTask = "";
+  addNewTask(description: string, board: string, status: boolean | null) {
+    if (description && status) {
+      this.newTaskEvent.emit({ description, board });
+      this.newTask = '';
       this.hideForm();
-    }else{
+    } else {
       this.showForm = true;
     }
   }
 
-  hideForm(){
+  hideForm() {
     this.showForm = false;
-    this.newTask = "";
+    this.newTask = '';
   }
 
-  deleteTask(event: any){
-    this.column.tasks.splice(event, 1)
+  deleteTask(event: any) {
+    this.column.tasks.splice(event, 1);
   }
-
 }

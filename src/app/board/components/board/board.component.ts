@@ -7,7 +7,7 @@ import { Task } from '../../models/task.model';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss'],
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
   constructor(private _firestore: FirestoreService) {}

@@ -1,14 +1,14 @@
 import {
   CdkDragDrop,
   moveItemInArray,
-  transferArrayItem,
+  transferArrayItem
 } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss'],
+  styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
   @Input() tasks: string[] = [];

@@ -1,5 +1,12 @@
 import { BoardService } from './../../services/board.service';
-import { Component, DoCheck, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FirestoreService } from '../../services/firestore.service';
@@ -9,13 +16,13 @@ import { Board } from '../../models/board.model';
 @Component({
   selector: 'app-create-board-modal',
   templateUrl: './create-board-modal.component.html',
-  styleUrls: ['./create-board-modal.component.scss'],
+  styleUrls: ['./create-board-modal.component.scss']
 })
 export class CreateBoardModalComponent implements OnInit, OnDestroy {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter();
   background: string = '#CB3DFA';
   newBoardForm: FormGroup = this.fb.group({
-    boardName: ['', [Validators.required, Validators.minLength(3)]],
+    boardName: ['', [Validators.required, Validators.minLength(3)]]
   });
 
   constructor(
@@ -36,12 +43,15 @@ export class CreateBoardModalComponent implements OnInit, OnDestroy {
       let payload: Board = {
         ...this.newBoardForm.value,
         boardBackground: this.background,
-        bid: this._firestoreService.generateId(),
+        bid: this._firestoreService.generateId()
       };
 
       this.newBoardForm.reset();
       this.closeModal();
-      this.toastr.success('Congratulations! your board has been added correctly', 'Board created');
+      this.toastr.success(
+        'Congratulations! your board has been added correctly',
+        'Board created'
+      );
     } else {
       this.newBoardForm.markAllAsTouched();
       e.preventDefault();

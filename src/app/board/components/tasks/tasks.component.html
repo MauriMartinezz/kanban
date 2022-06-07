@@ -2,14 +2,12 @@
   class="task-container"
   cdkDropList
   [cdkDropListData]="tasks"
-  (cdkDropListDropped)="drop($event)"
->
+  (cdkDropListDropped)="drop($event)">
   <div
     class="task"
     *ngFor="let task of tasks; let i = index"
     cdkDrag
-    #draggedTask
-  >
+    #draggedTask>
     <div class="task__body">
       {{ task }}
     </div>

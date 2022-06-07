@@ -12,9 +12,9 @@ export const environment = {
     apiKey: 'AIzaSyCgO0a-kgZQdrKLK_XNZWI_-WVFLWofECU',
     authDomain: 'ng-kanban-1a3e5.firebaseapp.com',
     messagingSenderId: '1079580338491',
-    measurementId: 'G-718TLYLBVW',
+    measurementId: 'G-718TLYLBVW'
   },
-  production: false,
+  production: false
   // firebaseConfig: {
   //   apiKey: 'AIzaSyCgO0a-kgZQdrKLK_XNZWI_-WVFLWofECU',
 

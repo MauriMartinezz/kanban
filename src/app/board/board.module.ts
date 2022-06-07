@@ -23,8 +23,15 @@ import { NgxColorsModule } from 'ngx-colors';
     HomeComponent,
     CreateBoardModalComponent,
     ColumnComponent,
-    ColorPickerComponent,
+    ColorPickerComponent
   ],
-  imports: [CommonModule, BoardRoutingModule, DragDropModule, FormsModule, ReactiveFormsModule, NgxColorsModule],
+  imports: [
+    CommonModule,
+    BoardRoutingModule,
+    DragDropModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxColorsModule
+  ]
 })
 export class BoardModule {}

@@ -1,6 +1,6 @@
 import { Board } from './board.model';
 
-export interface Task{
-    description: string;
-    board?: string;
+export interface Task {
+  description: string;
+  board?: string;
 }

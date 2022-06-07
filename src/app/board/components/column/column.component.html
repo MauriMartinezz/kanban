@@ -12,7 +12,10 @@
   </div>
   <ng-template #closeForm>
     <span (click)="hideForm()">
-      <img width="30" src="/assets/icons/close-button.svg" alt="Close form button" />
+      <img
+        width="30"
+        src="/assets/icons/close-button.svg"
+        alt="Close form button" />
     </span>
   </ng-template>
 </div>
@@ -22,8 +25,7 @@
     autocomplete="off"
     class="task__form"
     #myForm="ngForm"
-    (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)"
-  >
+    (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)">
     <div class="field animate__animated animate__backInDown">
       <div class="control has-icons-right">
         <input
@@ -35,14 +37,15 @@
           minlength="3"
           [(ngModel)]="newTask"
           (keyup.esc)="hideForm()"
-          (blur)="hideForm()"
-        />
+          (blur)="hideForm()" />
         <span class="icon is-small is-right task__form--submit">
           <img width="20" src="assets/icons/add-icon.svg" alt="add task icon" />
         </span>
       </div>
       <div class="control"></div>
-      <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">The task needs at least 3 characters</p>
+      <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">
+        The task needs at least 3 characters
+      </p>
     </div>
   </form>
 </div>
