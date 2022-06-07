@@ -3,7 +3,7 @@ import {
   moveItemInArray,
   transferArrayItem
 } from '@angular/cdk/drag-drop';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 
@@ -12,7 +12,7 @@ import { Task } from '../../models/task.model';
   templateUrl: './column.component.html',
   styleUrls: ['./column.component.scss']
 })
-export class ColumnComponent implements OnInit {
+export class ColumnComponent {
   @Output() newTaskEvent = new EventEmitter<Task>();
   @Output() indexDeleteTask = new EventEmitter<number>();
 
@@ -22,8 +22,6 @@ export class ColumnComponent implements OnInit {
   public newTask: string = '';
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   addNewTask(description: string, board: string, status: boolean | null) {
     if (description && status) {
@@ -40,7 +38,7 @@ export class ColumnComponent implements OnInit {
     this.newTask = '';
   }
 
-  deleteTask(event: any) {
-    this.column.tasks.splice(event, 1);
+  deleteTask(task: any) {
+    this.column.tasks.splice(task, 1);
   }
 }

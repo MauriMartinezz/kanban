@@ -40,8 +40,11 @@
   .task__form--submit {
     background: transparent;
     border: none;
-    cursor: pointer;
-    z-index: 10000;
+    img{
+      cursor: pointer;
+      z-index: 10000;
+
+    }
   }
 }
 

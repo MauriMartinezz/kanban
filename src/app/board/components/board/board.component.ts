@@ -1,23 +1,13 @@
-import { FirestoreService } from './../../services/firestore.service';
-import { Component, OnInit, Output } from '@angular/core';
-import { Board } from '../../models/board.model';
-import { Column } from '../../models/column.model';
-import { Task } from '../../models/task.model';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BoardService } from '../../services/board.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
-  constructor(private _firestore: FirestoreService) {}
-
-  ngOnInit(): void {
-    // this._firestore.addColumn('ejemplo').subscribe((doc: any) => {
-    //   doc.map((m: any) => console.log(m.payload.doc.data()));
-    // });
-  }
-}
+export class BoardComponent {}
 
 // addTask(e: Task){
 //   console.log(e)

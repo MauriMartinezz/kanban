@@ -1,0 +1,25 @@
+<form autocomplete="off" class="task__form" #myForm="ngForm">
+  <!-- (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)"> -->
+
+  <div class="field animate__animated animate__backInDown">
+    <div class="control has-icons-right">
+      <input
+        class="input task__form--input is-rounded"
+        type="text"
+        placeholder="New task"
+        name="taskInput"
+        required
+        minlength="3"
+        [(ngModel)]="newTask"
+        (keyup.esc)="hideForm()"
+        (blur)="hideForm()" />
+      <span class="icon is-small is-right task__form--submit">
+        <img width="20" src="assets/icons/add-icon.svg" alt="add task icon" />
+      </span>
+    </div>
+    <div class="control"></div>
+    <p class="help is-danger" *ngIf="!myForm.valid && !myForm.pristine">
+      The task needs at least 3 characters
+    </p>
+  </div>
+</form>
