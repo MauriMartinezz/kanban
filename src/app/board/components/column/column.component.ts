@@ -4,8 +4,10 @@ import {
   transferArrayItem
 } from '@angular/cdk/drag-drop';
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
+import { ColumnService } from '../../services/column.service';
 
 @Component({
   selector: 'app-column',
@@ -20,12 +22,15 @@ export class ColumnComponent {
 
   public showForm: boolean = false;
   public newTask: string = '';
-
-  constructor() {}
+  public columns$!: Observable<any>;
+  constructor(private readonly _columnService: ColumnService) {
+    _columnService.getColumns().subscribe(console.log);
+    this.columns$ = _columnService.getColumns();
+  }
 
   addNewTask(description: string, board: string, status: boolean | null) {
     if (description && status) {
-      this.newTaskEvent.emit({ description, board });
+      this.newTaskEvent.emit({ description, boardId: board });
       this.newTask = '';
       this.hideForm();
     } else {
@@ -38,7 +43,7 @@ export class ColumnComponent {
     this.newTask = '';
   }
 
-  deleteTask(task: any) {
-    this.column.tasks.splice(task, 1);
-  }
+  // deleteTask(task: any) {
+  //   this.column.tasks.splice(task, 1);
+  // }
 }

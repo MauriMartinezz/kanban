@@ -13,17 +13,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FirestoreService {
-  private boards$: Board[] = [];
-  private board!: Board;
-
-  public get boardsGetter(): Board[] {
-    return this.boards$;
-  }
-
-  public set boardSetter(payload: Board) {
-    this.board = payload;
-  }
-
   constructor(private firestore: AngularFirestore) {}
 
   getBoards(): Observable<DocumentChangeAction<unknown>[]> {
@@ -37,13 +26,9 @@ export class FirestoreService {
       .collection('boards', ref => ref.orderBy('bid', 'asc'))
       .snapshotChanges();
   }
-  createBoard() {
-    this.firestore.collection('boards').add(this.board);
-  }
-
-  addColumn(column: string): Observable<any> {
-    return this.firestore.collection('boards').snapshotChanges();
-  }
+  // createBoard() {
+  //   this.firestore.collection('boards').add(this.board);
+  // }
 
   generateId(): string {
     let id = Math.floor((1 + Math.random()) * 0x100000)

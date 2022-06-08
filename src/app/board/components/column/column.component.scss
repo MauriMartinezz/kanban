@@ -1,22 +1,22 @@
 .column-header {
   display: flex;
   justify-content: space-between;
-}
-.column-header--title {
-  font-size: 20px;
-  font-weight: 800;
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.column-header--button {
-  display: flex;
-  justify-content: flex-end;
-  span {
-    cursor: pointer;
+  .column-header--title {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .column-header--button {
+    display: flex;
+    justify-content: flex-end;
+    span {
+      cursor: pointer;
+    }
   }
 }
+
 
 @mixin task {
   display: flex;

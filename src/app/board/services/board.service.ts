@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, of, Observable } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
+
 import { Board } from '../models/board.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
-  private boards: BehaviorSubject<Observable<any>> = new BehaviorSubject(
-    this.getBoards()
+  private boards: BehaviorSubject<any> = new BehaviorSubject(this.getBoards());
+
+  public boards$: Observable<Board[] | any> = this.boards.pipe(
+    switchMap(board => board)
   );
 
-  get boardsObservableGetter() {
-    return this.boards.asObservable();
-  }
-
-  set boardsDataSetter(data: any) {
-    this.boards.next(data);
-  }
   constructor(private firestore: AngularFirestore) {}
 
-  getBoards(): Observable<unknown[]> {
+  getBoards(): Observable<Board[] | any> {
     return this.firestore
-      .collection('boards', (ref: any) => ref.orderBy('bid', 'asc'))
-      .valueChanges();
+      .collection('boards')
+      .valueChanges()
+      .pipe(map(m => m));
   }
 }

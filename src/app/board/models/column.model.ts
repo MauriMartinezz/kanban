@@ -1,9 +1,7 @@
-// export class Column{
-//     constructor(public id: number, public name: string, public tasks: string[]){}
-// }
+import { Task } from './task.model';
 
 export interface Column {
-  id: number;
+  id: string;
   name: string;
-  tasks: string[];
+  tasks?: Task[];
 }

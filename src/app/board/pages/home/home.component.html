@@ -1,16 +1,15 @@
-<div class="boards__container columns p-5" *ngIf="board$ | async">
+<div class="boards__container columns p-5" *ngIf="board$ | async as boards">
   <div
-    *ngFor="let board of motley | async"
+    *ngFor="let board of boards"
     class="column is-2 card mr-3"
     [ngStyle]="{ background: board.boardBackground }"
     [routerLink]="['/kanban', board.bid]">
     <div class="card-content">
       <p class="title is-3" [ngStyle]="{ color: textColor }">
-        {{ board }}
+        {{ board.boardName }}
       </p>
     </div>
   </div>
-
   <div
     class="column is-2 card has-text-centered"
     (click)="openModal()"
@@ -20,6 +19,32 @@
     </div>
   </div>
 </div>
+
 <div class="create__board" *ngIf="modalSwitch">
   <app-create-board-modal></app-create-board-modal>
 </div>
+<!-- 
+<div class="boards__container columns p-5" *ngIf="board$ | async as motley">
+  <div
+    *ngFor="let board of motley"
+    class="column is-2 card mr-3"
+    [ngStyle]="{ background: board.boardBackground }"
+    [routerLink]="['/kanban', board.bid]">
+    <div class="card-content">
+      <p class="title is-3" [ngStyle]="{ color: textColor }">
+        {{ board.boardName }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="column is-2 card"
+    [ngStyle]="{ background: 'rgba(255,255,255,0.3)' }">
+    <div class="card-content">
+      <p class="title is-3">Ejemplo de tablero</p>
+    </div>
+  </div>
+</div>
+<div class="create__board" *ngIf="modalSwitch">
+  <app-create-board-modal></app-create-board-modal>
+</div> -->
