@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { BoardService } from '../../services/board.service';
-import { ColumnService } from '../../services/column.service';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
@@ -10,20 +10,23 @@ import { ModalService } from '../../services/modal.service';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+  bid!: string;
   modalSwitch: boolean = false;
 
   columns$!: Observable<any>;
   constructor(
-    private readonly _columnService: ColumnService,
-    private readonly _modalService: ModalService
-  ) {
-    this.columns$ = _columnService.getColumns();
-  }
+    private readonly _modalService: ModalService,
+    private readonly _boardService: BoardService,
+    private readonly route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.bid = this.route.snapshot.paramMap.get('bid')!;
+
     this._modalService.$modal.subscribe(
       (value: boolean) => (this.modalSwitch = value)
     );
+    this.columns$ = this._boardService.getColumns(this.bid);
   }
   openModal() {
     this.modalSwitch = true;

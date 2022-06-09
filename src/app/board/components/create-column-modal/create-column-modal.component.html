@@ -12,20 +12,20 @@
         autocomplete="off"
         class="mt-4"
         [formGroup]="newBoardForm"
-        (ngSubmit)="createColumn($event)"
-        (keyup.enter)="createColumn($event)">
+        (ngSubmit)="createColumn()"
+        (keyup.enter)="createColumn()">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
             <input
-              formControlName="boardName"
+              formControlName="name"
               class="input is-rounded"
               type="text"
               placeholder="e.g Work" />
             <span
               *ngIf="
-                newBoardForm.controls['boardName'].invalid &&
-                newBoardForm.controls['boardName'].touched
+                newBoardForm.controls['name'].invalid &&
+                newBoardForm.controls['name'].touched
               "
               class="has-text-danger">
               Name must have at least 2 characters
