@@ -5,6 +5,7 @@ import { switchMap, map } from 'rxjs/operators';
 
 import { Board } from '../models/board.model';
 import { Column } from '../models/column.model';
+import { IdService } from './id-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,10 @@ export class BoardService {
     switchMap(board => board)
   );
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private _idServiceService: IdService
+  ) {}
 
   getBoards(): Observable<Board[] | any> {
     return this.firestore
@@ -37,7 +41,12 @@ export class BoardService {
     return this.getBoardId(bid).collection('columns').valueChanges();
   }
 
-  addColumn(bid: string, column: Column) {
-    this.getBoardId(bid).collection('columns').doc(column.id).set(column);
+  addColumn(bid: string, name: string) {
+    const id = this._idServiceService.generateId();
+    this.getBoardId(bid).collection('columns').doc(id).set({
+      id,
+      name
+    });
+    // this.getBoardId(bid).collection('columns').push().set(column);
   }
 }

@@ -27,13 +27,13 @@ export class CreateColumnModalComponent {
   }
 
   createColumn() {
-    this._boardService.addColumn(this.bid!, this.newBoardForm.value);
+    const nameValue = this.newBoardForm.get('name')?.value;
+    // console.log(this.newBoardForm.get('name')?.value);
+
+    this._boardService.addColumn(this.bid!, nameValue);
     this.closeModal();
     this._modalService.$modal;
 
-    this.toastr.success(
-      `${this.newBoardForm.get(['name'])?.value} added correctly`,
-      'Column created'
-    );
+    this.toastr.success(`${nameValue} added correctly`, 'Column created');
   }
 }
