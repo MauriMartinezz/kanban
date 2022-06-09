@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, of, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 
 import { Board } from '../models/board.model';
@@ -22,5 +22,13 @@ export class BoardService {
       .collection('boards')
       .valueChanges()
       .pipe(map(m => m));
+  }
+
+  createBoard(board: Board) {
+    this.getBoardId(board.bid).set(board);
+  }
+
+  getBoardId(bid: string): any {
+    return this.firestore.collection('boards').doc(bid);
   }
 }

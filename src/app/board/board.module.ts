@@ -15,6 +15,7 @@ import { ColumnComponent } from './components/column/column.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { NgxColorsModule } from 'ngx-colors';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { CreateColumnModalComponent } from './components/create-column-modal/create-column-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     CreateBoardModalComponent,
     ColumnComponent,
     ColorPickerComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    CreateColumnModalComponent
   ],
   imports: [
     CommonModule,

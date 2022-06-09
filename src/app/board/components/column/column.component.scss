@@ -33,7 +33,6 @@
   .task__form--input {
     @include task();
     display: flex;
-    align-items: center;
     width: 100%;
     border: none;
   }
@@ -42,8 +41,6 @@
     border: none;
     img{
       cursor: pointer;
-      z-index: 10000;
-
     }
   }
 }

@@ -1,13 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BoardService } from '../../services/board.service';
+import { ColumnService } from '../../services/column.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {}
+export class BoardComponent implements OnInit {
+  modalSwitch: boolean = false;
+
+  columns$!: Observable<any>;
+  constructor(
+    private readonly _columnService: ColumnService,
+    private readonly _modalService: ModalService
+  ) {
+    this.columns$ = _columnService.getColumns();
+  }
+
+  ngOnInit() {
+    this._modalService.$modal.subscribe(
+      (value: boolean) => (this.modalSwitch = value)
+    );
+  }
+  openModal() {
+    this.modalSwitch = true;
+  }
+}
 
 // addTask(e: Task){
 //   console.log(e)

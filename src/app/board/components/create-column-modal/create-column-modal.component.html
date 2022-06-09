@@ -1,9 +1,9 @@
 <div class="modal-2 animate__animated animate__fadeInDown animate__faster">
   <div class="modal-card">
     <div class="modal__header is-flex is-justify-content-space-between">
-      <h2 class="title">New Board</h2>
+      <h2 class="title">New Column</h2>
       <div class="modal__buttons">
-        <button (click)="closeModal()" class="delete is-large"></button>
+        <button class="delete is-large"></button>
       </div>
     </div>
 
@@ -12,8 +12,8 @@
         autocomplete="off"
         class="mt-4"
         [formGroup]="newBoardForm"
-        (ngSubmit)="createBoard($event)"
-        (keyup.enter)="createBoard($event)">
+        (ngSubmit)="createColumn($event)"
+        (keyup.enter)="createColumn($event)">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
@@ -32,13 +32,7 @@
             </span>
           </div>
         </div>
-        <div class="field">
-          <label class="label">Pick a background Color:</label>
-          <div class="control colorPaletteContainer">
-            <app-color-picker
-              (onBoardBackground)="backgroundColor($event)"></app-color-picker>
-          </div>
-        </div>
+
         <div class="is-flex is-justify-content-end">
           <button
             [disabled]="newBoardForm.invalid"

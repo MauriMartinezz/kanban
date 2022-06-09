@@ -21,17 +21,8 @@ export class FirestoreService {
       .snapshotChanges();
   }
 
-  getBoardId(): any {
-    return this.firestore
-      .collection('boards', ref => ref.orderBy('bid', 'asc'))
-      .snapshotChanges();
-  }
-  // createBoard() {
-  //   this.firestore.collection('boards').add(this.board);
-  // }
-
   generateId(): string {
-    let id = Math.floor((1 + Math.random()) * 0x100000)
+    let id = Math.floor((1 + Math.random()) * 0x10000000000)
       .toString(16)
       .substring(1);
 

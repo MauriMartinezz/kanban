@@ -19,9 +19,8 @@ export class ColumnService {
   public columns$ = this.columns.pipe(switchMap(c => c));
   constructor(private firestore: AngularFirestore) {}
 
-  // createColumn(bid: string){}
   addColumn(column: Column): void {
-    this.firestore.collection('columns').add(column);
+    this.firestore.collection('columns').doc(column.id).set(column);
   }
 
   getColumns(): Observable<any> {
