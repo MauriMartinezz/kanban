@@ -28,7 +28,6 @@ export class CreateColumnModalComponent {
 
   createColumn() {
     const nameValue = this.newBoardForm.get('name')?.value;
-    // console.log(this.newBoardForm.get('name')?.value);
 
     this._boardService.addColumn(this.bid!, nameValue);
     this.closeModal();

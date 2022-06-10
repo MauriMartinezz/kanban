@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+  DocumentData,
+  QuerySnapshot
+} from '@angular/fire/compat/firestore';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-
 import { Board } from '../models/board.model';
 import { Column } from '../models/column.model';
 import { IdService } from './id-service.service';
+import { TaskService } from './task.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +25,8 @@ export class BoardService {
 
   constructor(
     private firestore: AngularFirestore,
-    private _idServiceService: IdService
+    private _idServiceService: IdService,
+    private _idService: IdService
   ) {}
 
   getBoards(): Observable<Board[] | any> {
@@ -33,20 +40,45 @@ export class BoardService {
     this.getBoardId(board.bid).set(board);
   }
 
-  getBoardId(bid: string): any {
+  getBoardId(bid: string): AngularFirestoreDocument<Board> {
     return this.firestore.collection('boards').doc(bid);
   }
 
-  getColumns(bid: string | any) {
+  getColumns(bid: string): Observable<DocumentData> {
     return this.getBoardId(bid).collection('columns').valueChanges();
   }
-
+  getColumnById(bid: string, cid: string): AngularFirestoreDocument<Column> {
+    return this.firestore
+      .collection('boards')
+      .doc(bid)
+      .collection('columns')
+      .doc(cid);
+  }
   addColumn(bid: string, name: string) {
     const id = this._idServiceService.generateId();
-    this.getBoardId(bid).collection('columns').doc(id).set({
+    const board = this.getBoardId(bid);
+    board.collection('columns').doc(id).set({ id, name });
+  }
+
+  getColumnTasks(bid: string, cid: string): Observable<any> {
+    const snapshot = this.getColumnById(bid, cid)
+      .collection('tasks')
+      .valueChanges();
+    return snapshot;
+    // .pipe(
+    //   map(m => {
+    //     return m;
+    //   })
+    // );
+  }
+  addTask(description: string, bid: string, cid: string) {
+    const id = this._idService.generateId();
+    const date = new Date();
+    // firebase.firestore.FieldValue.serverTimestamp();
+    this.getColumnById(bid, cid).collection('tasks').doc(id).set({
       id,
-      name
+      description,
+      createdAt: date
     });
-    // this.getBoardId(bid).collection('columns').push().set(column);
   }
 }

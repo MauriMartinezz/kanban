@@ -24,7 +24,7 @@
     autocomplete="off"
     class="task__form"
     #myForm="ngForm"
-    (ngSubmit)="addNewTask(newTask, column.name, myForm.valid)">
+    (ngSubmit)="addNewTask(bid, column.id)">
     <div class="field animate__animated animate__backInDown">
       <div class="control has-icons-right">
         <input
@@ -49,4 +49,7 @@
   </form>
 </div>
 
-<!-- <app-tasks (onDeleteTask)="deleteTask($event)" [tasks]="column.tasks"></app-tasks> -->
+<app-tasks [tasks]="tasks$ | async"></app-tasks>
+<!-- <p *ngFor="let task of tasks$ | async">
+  {{ task.description }}
+</p> -->

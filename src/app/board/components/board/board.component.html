@@ -18,7 +18,8 @@
       <div class="board-column">
         <app-column
           *ngFor="let column of columns$ | async"
-          [column]="column"></app-column>
+          [column]="column"
+          [bid]="bid"></app-column>
       </div>
     </div>
   </div>
