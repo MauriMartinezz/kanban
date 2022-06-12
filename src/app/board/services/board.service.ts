@@ -37,15 +37,21 @@ export class BoardService {
   }
 
   createBoard(board: Board) {
-    this.getBoardId(board.bid).set(board);
+    this.getBoardRefById(board.bid).set(board);
   }
 
-  getBoardId(bid: string): AngularFirestoreDocument<Board> {
+  // getBoardById(bid: string): AngularFirestoreDocument<Board> {
+  getBoardById(bid: string): Observable<any> {
+    // return this.firestore.collection('boards').doc(bid);
+    return this.firestore.collection('boards').doc(bid).valueChanges();
+  }
+
+  getBoardRefById(bid: string): AngularFirestoreDocument {
     return this.firestore.collection('boards').doc(bid);
   }
 
   getColumns(bid: string): Observable<DocumentData> {
-    return this.getBoardId(bid).collection('columns').valueChanges();
+    return this.getBoardRefById(bid).collection('columns').valueChanges();
   }
   getColumnById(bid: string, cid: string): AngularFirestoreDocument<Column> {
     return this.firestore
@@ -56,7 +62,7 @@ export class BoardService {
   }
   addColumn(bid: string, name: string) {
     const id = this._idServiceService.generateId();
-    const board = this.getBoardId(bid);
+    const board = this.getBoardRefById(bid);
     board.collection('columns').doc(id).set({ id, name });
   }
 

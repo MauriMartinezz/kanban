@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { Board } from '../../models/board.model';
 import { BoardService } from '../../services/board.service';
 import { ModalService } from '../../services/modal.service';
 
@@ -12,6 +14,8 @@ import { ModalService } from '../../services/modal.service';
 export class BoardComponent implements OnInit {
   bid!: string;
   modalSwitch: boolean = false;
+  // board!: Observable<Board>;
+  board!: Observable<Board>;
 
   columns$!: Observable<any>;
   constructor(
@@ -22,7 +26,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.bid = this.route.snapshot.paramMap.get('bid')!;
-
+    this.board = this._boardService.getBoardById(this.bid);
     this._modalService.$modal.subscribe(
       (value: boolean) => (this.modalSwitch = value)
     );
