@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
     private readonly _modalService: ModalService,
     private readonly _boardService: BoardService,
     private readonly route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.bid = this.route.snapshot.paramMap.get('bid')!;
